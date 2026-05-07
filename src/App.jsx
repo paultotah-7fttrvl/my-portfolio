@@ -318,7 +318,7 @@ export default function Portfolio() {
           </div>
           <div style={{ opacity: heroInView ? 1 : 0, animation: heroInView ? "fadeUp 0.7s 0.3s ease forwards" : "none" }}>
             <p style={{ fontSize: "1.05rem", color: "#7777aa", maxWidth: 620, lineHeight: 1.75, marginBottom: "2.5rem" }}>
-              I’m a product manager with deep roots in travel, hospitality, and enterprise SaaS, using customer insight, data, and AI-forward tools to turn real-world problems into shippable product ideas.
+              I’m a product manager with a background in hospitality, revenue strategy, and enterprise SaaS, using customer insight, data, and AI-forward tools to turn real-world problems into shippable product ideas.
             </p>
           </div>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", opacity: heroInView ? 1 : 0, animation: heroInView ? "fadeUp 0.7s 0.4s ease forwards" : "none" }}>
