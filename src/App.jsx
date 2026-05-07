@@ -13,7 +13,7 @@ const PROJECTS = [
       "Built a feature prototype that helps travelers compare live rates for a preferred hotel across multiple date combinations in one decision-friendly view.",
       "Defined the product problem, user workflow, booking logic, and API requirements, using AI-assisted development, SerpAPI, GitHub, and Render to move from concept to live prototype.",
     ],
-    link: "https://hotel-rate-scanner.onrender.com",
+    link: "https://hotelscanner.paul-totah.com",
     linkLabel: "View Live Prototype →",
     metrics: [
       { label: "Status", value: "Deployed" },
