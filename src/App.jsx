@@ -28,8 +28,8 @@ const PROJECTS = [
     problem:
       "An Alaska Airlines Atmos member can check their progress toward status, including miles earned and miles remaining, but already-booked trips are not factored into the calculation.",
     description: [
-      "Designed a UX enhancement to the existing Account section: an Upcoming Trips projection layer that sits on top of the current status tracker.",
-      "The prototype adds a dual-arc progress ring, editable trip mileage, and a Status Forecast card showing how far a member is from their target after accounting for booked travel.",
+      "Designed a UX enhancement to the existing Account section that adds projected status progress from already-booked trips.",
+      "The prototype adds an Upcoming Trips list, earned-versus-projected progress, and a status summary card showing the remaining mileage gap after booked travel.",
     ],
     metrics: [
       { label: "Status", value: "Shared concept" },
@@ -37,7 +37,7 @@ const PROJECTS = [
     ],
     modalImage: "/atmos-rewards-prototype.jpg",
     modalLabel: "View UX Enhancement Suggestion →",
-    modalAlt: "Alaska Airlines Atmos status projection UX enhancement concept",
+    modalAlt: "Alaska Airlines Atmos upcoming trips status projection UX enhancement concept",
     color: "#FF6FD8",
   },
 ];
