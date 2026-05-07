@@ -35,6 +35,9 @@ const PROJECTS = [
       { label: "Status", value: "Shared concept" },
       { label: "Focus", value: "Loyalty status UX" },
     ],
+    modalImage: "/atmos-rewards-prototype.jpg",
+    modalLabel: "View UX Enhancement Suggestion →",
+    modalAlt: "Alaska Airlines Atmos status projection UX enhancement concept",
     color: "#FF6FD8",
   },
 ];
@@ -137,7 +140,7 @@ function TypeWriter({ words }) {
   );
 }
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, onOpenModal }) {
   const [ref, inView] = useInView();
   const [hovered, setHovered] = useState(false);
   return (
@@ -200,6 +203,15 @@ function ProjectCard({ project, index }) {
           {project.linkLabel}
         </a>
       )}
+      {project.modalImage && (
+        <button type="button" onClick={() => onOpenModal(project)}
+          style={{ display: "inline-block", marginBottom: "1.5rem", background: "none", border: "none", padding: 0, color: project.color, fontFamily: "'DM Mono', monospace", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", transition: "opacity 0.2s", cursor: "pointer" }}
+          onMouseEnter={e => e.target.style.opacity = 0.75}
+          onMouseLeave={e => e.target.style.opacity = 1}
+        >
+          {project.modalLabel}
+        </button>
+      )}
       <div style={{ display: "flex", gap: "1.5rem" }}>
         {project.metrics.map((m) => (
           <div key={m.label}>
@@ -218,6 +230,7 @@ export default function Portfolio() {
   const [aboutRef, aboutInView] = useInView();
   const [contactRef, contactInView] = useInView();
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
+  const [activeModalProject, setActiveModalProject] = useState(null);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
@@ -338,7 +351,7 @@ export default function Portfolio() {
           </h2>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 460px), 1fr))", gap: "1.25rem" }}>
-          {PROJECTS.map((p, i) => <ProjectCard key={p.id} project={p} index={i} />)}
+          {PROJECTS.map((p, i) => <ProjectCard key={p.id} project={p} index={i} onOpenModal={setActiveModalProject} />)}
         </div>
       </section>
 
@@ -453,6 +466,30 @@ export default function Portfolio() {
           © 2026 PAUL TOTAH — PRODUCT MANAGER
         </span>
       </footer>
+
+      {activeModalProject && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeModalProject.modalAlt}
+          onClick={() => setActiveModalProject(null)}
+          style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.82)", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem" }}
+        >
+          <div onClick={e => e.stopPropagation()} style={{ position: "relative", maxWidth: 420, width: "100%" }}>
+            <button type="button" onClick={() => setActiveModalProject(null)}
+              aria-label="Close prototype preview"
+              style={{ position: "absolute", top: "-2.75rem", right: 0, background: "transparent", border: "1px solid #333344", borderRadius: 999, color: "#f0f0fa", width: 36, height: 36, cursor: "pointer", fontSize: "1.2rem", lineHeight: 1 }}
+            >
+              ×
+            </button>
+            <img
+              src={activeModalProject.modalImage}
+              alt={activeModalProject.modalAlt}
+              style={{ display: "block", width: "100%", maxHeight: "82vh", objectFit: "contain", borderRadius: 18, border: "1px solid #222230", boxShadow: "0 24px 80px rgba(0,0,0,0.45)" }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
