@@ -436,7 +436,7 @@ export default function Portfolio() {
           </form>
 
           <div style={{ marginTop: "3rem", paddingTop: "2rem", borderTop: "1px solid #1a1a28", display: "flex", justifyContent: "center", gap: "2rem", flexWrap: "wrap" }}>
-            {[["LinkedIn", "https://linkedin.com/in/paultotah/"], ["GitHub", "https://github.com/paultotah/my-portfolio"], ["Resume", "/Paul-Totah-Resume.pdf"]].map(([label, href]) => (
+            {[["LinkedIn", "https://linkedin.com/in/paultotah/"], ["GitHub", "https://github.com/paultotah-7fttrvl/my-portfolio"], ["Resume", "/Paul-Totah-Resume.pdf"]].map(([label, href]) => (
               <a key={label} href={href}
                 style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.72rem", color: "#555577", letterSpacing: "0.1em", textTransform: "uppercase", transition: "color 0.2s" }}
                 onMouseEnter={e => e.target.style.color = "#4FFFB0"}
