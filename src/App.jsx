@@ -2,6 +2,13 @@ import { useState, useEffect, useRef } from "react";
 
 const NAV_LINKS = ["Work", "About", "Contact"];
 
+const HERO_PROOF_POINTS = [
+  "Hospitality technology",
+  "Enterprise SaaS",
+  "Revenue strategy",
+  "AI-assisted prototypes",
+];
+
 const PROJECTS = [
   {
     id: 1,
@@ -35,7 +42,7 @@ const PROJECTS = [
       { label: "Status", value: "Shared concept" },
       { label: "Focus", value: "Loyalty status UX" },
     ],
-    modalImage: "/atmos-rewards-prototype.jpg",
+    modalImage: "/alaska-atmos-linkedin.png",
     modalLabel: "View UX Enhancement Suggestion →",
     modalAlt: "Alaska Airlines Atmos upcoming trips status projection UX enhancement concept",
     color: "#FF6FD8",
@@ -313,14 +320,27 @@ export default function Portfolio() {
           </div>
           <div style={{ opacity: heroInView ? 1 : 0, animation: heroInView ? "fadeUp 0.7s 0.2s ease forwards" : "none" }}>
             <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.5rem, 4vw, 3rem)", fontWeight: 600, lineHeight: 1.2, color: "#5a5a7a", marginBottom: "2rem" }}>
-              Building products that{" "}<TypeWriter words={["scale.", "convert.", "delight.", "ship.", "matter."]} />
+              Hospitality tech and SaaS products that{" "}<TypeWriter words={["scale.", "convert.", "delight.", "ship.", "matter."]} />
             </h2>
           </div>
           <div style={{ opacity: heroInView ? 1 : 0, animation: heroInView ? "fadeUp 0.7s 0.3s ease forwards" : "none" }}>
             <p style={{ fontSize: "1.05rem", color: "#7777aa", maxWidth: 620, lineHeight: 1.75, marginBottom: "2.5rem" }}>
-              I’m a product manager with a background in hospitality, revenue strategy, and enterprise SaaS, using customer insight, data, and AI-forward tools to turn real-world problems into shippable product ideas.
+              I’m a product manager connecting hospitality operations, revenue strategy, and enterprise SaaS experience with AI-assisted prototyping to turn customer problems into shippable product ideas.
             </p>
           </div>
+          <ul
+            aria-label="Product management focus areas"
+            style={{ listStyle: "none", display: "flex", gap: "0.75rem", flexWrap: "wrap", margin: "0 0 2.5rem", opacity: heroInView ? 1 : 0, animation: heroInView ? "fadeUp 0.7s 0.35s ease forwards" : "none" }}
+          >
+            {HERO_PROOF_POINTS.map((point) => (
+              <li
+                key={point}
+                style={{ border: "1px solid #1e1e2e", borderRadius: 999, color: "#aaaacc", background: "#111119", padding: "0.5rem 0.85rem", fontSize: "0.78rem", fontFamily: "'DM Mono', monospace", letterSpacing: "0.04em" }}
+              >
+                {point}
+              </li>
+            ))}
+          </ul>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", opacity: heroInView ? 1 : 0, animation: heroInView ? "fadeUp 0.7s 0.4s ease forwards" : "none" }}>
             <button onClick={() => scrollTo("work")}
               style={{ background: "#4FFFB0", color: "#0A0A0F", padding: "0.85rem 2rem", border: "none", borderRadius: 8, fontWeight: 700, fontSize: "0.9rem", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.04em", transition: "all 0.2s" }}
@@ -347,8 +367,11 @@ export default function Portfolio() {
         <div style={{ marginBottom: "3.5rem" }}>
           <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.75rem", color: "#4FFFB0", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "0.75rem" }}>Selected Work</p>
           <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "#f0f0fa", letterSpacing: "-0.02em" }}>
-            Product thinking <span style={{ whiteSpace: "nowrap" }}>in practice</span>
+            Hospitality product thinking <span style={{ whiteSpace: "nowrap" }}>in practice</span>
           </h2>
+          <p style={{ color: "#8888aa", fontSize: "0.95rem", lineHeight: 1.75, maxWidth: 680, marginTop: "1rem" }}>
+            Short case studies showing how I frame customer problems, define product workflows, and move from discovery to testable prototypes.
+          </p>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 460px), 1fr))", gap: "1.25rem" }}>
           {PROJECTS.map((p, i) => <ProjectCard key={p.id} project={p} index={i} onOpenModal={setActiveModalProject} />)}
