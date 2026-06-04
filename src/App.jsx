@@ -17,8 +17,8 @@ const PROJECTS = [
     problem:
       "Many travelers already know the hotel they want. When their dates are flexible, they need a faster way to scan rates across possible stay dates without repeating the same search.",
     description: [
-      "Built a feature prototype that helps travelers compare live rates for a preferred hotel across multiple date combinations in one decision-friendly view.",
-      "Defined the product problem, user workflow, booking logic, and API requirements, using AI-assisted development, SerpAPI, GitHub, and Render to move from concept to live prototype.",
+      "Built a feature prototype that helps travelers compare live rates for a preferred hotel across multiple date combinations in one decision-friendly view. If rates are above the traveler’s budget, they can set a price alert that automatically checks for updates every six hours.",
+      "Defined the product problem, user workflow, booking logic, alerting experience, and API requirements, using AI-assisted development, SerpAPI, GitHub, and Render to move from concept to live prototype.",
     ],
     link: "https://hotelscanner.paul-totah.com",
     linkLabel: "View Live Prototype →",
