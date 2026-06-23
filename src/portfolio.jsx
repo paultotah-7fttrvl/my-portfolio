@@ -379,7 +379,7 @@ export default function Portfolio() {
           )}
 
           <div style={{ marginTop: "3rem", paddingTop: "2rem", borderTop: "1px solid #1a1a28", display: "flex", justifyContent: "center", gap: "2rem" }}>
-            {[["LinkedIn", "#"], ["GitHub", "#"], ["Twitter / X", "#"], ["Resume", "#"]].map(([label, href]) => (
+            {[["LinkedIn", "#"], ["GitHub", "#"], ["Twitter / X", "#"]].map(([label, href]) => (
               <a key={label} href={href}
                 style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.72rem", color: "#555577", letterSpacing: "0.1em", textTransform: "uppercase", transition: "color 0.2s" }}
                 onMouseEnter={e => e.target.style.color = "#4FFFB0"}

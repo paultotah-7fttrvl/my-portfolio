@@ -1258,7 +1258,7 @@ export default function Portfolio() {
           </form>
 
           <div className="social-links">
-            {[["LinkedIn", "https://linkedin.com/in/paultotah/"], ["GitHub", "https://github.com/paultotah-7fttrvl/my-portfolio"], ["Resume", "/Paul-Totah-Resume.pdf"]].map(([label, href]) => (
+            {[["LinkedIn", "https://linkedin.com/in/paultotah/"], ["GitHub", "https://github.com/paultotah-7fttrvl/my-portfolio"]].map(([label, href]) => (
               <a key={label} href={href}
               >{label}</a>
             ))}
