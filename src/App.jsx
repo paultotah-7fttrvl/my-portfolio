@@ -46,9 +46,6 @@ const CASE_STUDIES = [
       "I designed an enhancement to the existing Account section: an Upcoming Trips list, earned-versus-projected progress, and a summary that shows the remaining mileage gap after booked trips.",
     outcome:
       "The concept makes future status feel actionable instead of retrospective—so members can understand what they already have in motion before they book more travel.",
-    modalImage: "/alaska-atmos-linkedin.png",
-    modalLabel: "View UX concept",
-    modalAlt: "Alaska Airlines Atmos upcoming trips status projection UX enhancement concept",
     image: "/atmos-rewards-prototype.jpg",
     imageAlt: "Mobile concept preview for Alaska Airlines Atmos status projection",
   },
@@ -123,7 +120,7 @@ function useInView(threshold = 0.18) {
   return [ref, inView];
 }
 
-function CaseStudy({ study, index, onOpenModal }) {
+function CaseStudy({ study, index }) {
   const [ref, inView] = useInView(0.16);
 
   return (
@@ -172,11 +169,6 @@ function CaseStudy({ study, index, onOpenModal }) {
             {study.linkLabel} →
           </a>
         )}
-        {study.modalImage && (
-          <button type="button" className="case-link" onClick={() => onOpenModal(study)}>
-            {study.modalLabel} →
-          </button>
-        )}
       </div>
     </article>
   );
@@ -188,7 +180,6 @@ export default function App() {
   const [approachRef, approachInView] = useInView(0.12);
   const [contactRef, contactInView] = useInView(0.16);
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
-  const [activeModal, setActiveModal] = useState(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -196,15 +187,6 @@ export default function App() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    if (!activeModal) return undefined;
-    const onKeyDown = (event) => {
-      if (event.key === "Escape") setActiveModal(null);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [activeModal]);
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -278,7 +260,6 @@ export default function App() {
                 key={study.id}
                 study={study}
                 index={index}
-                onOpenModal={setActiveModal}
               />
             ))}
           </div>
@@ -420,27 +401,6 @@ export default function App() {
       <footer className="site-footer">
         <span>© 2026 Paul Totah — Product Manager</span>
       </footer>
-
-      {activeModal && (
-        <div
-          className="modal-backdrop"
-          role="dialog"
-          aria-modal="true"
-          aria-label={activeModal.modalAlt}
-          onClick={() => setActiveModal(null)}
-        >
-          <div className="modal-content" onClick={(event) => event.stopPropagation()}>
-            <button
-              type="button"
-              aria-label="Close concept preview"
-              onClick={() => setActiveModal(null)}
-            >
-              ×
-            </button>
-            <img src={activeModal.modalImage} alt={activeModal.modalAlt} />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
