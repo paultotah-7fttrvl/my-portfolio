@@ -341,6 +341,34 @@
   object-position: top center;
 }
 
+.case-media.product-shot {
+  background: #f4f1ea;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.case-media.product-shot img {
+  min-height: 0;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.case-media.case-media-stack {
+  display: grid;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  overflow: visible;
+}
+
+.case-media.case-media-stack img {
+  min-height: 220px;
+  max-height: 320px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #f7f4ef;
+}
+
 .case-media.placeholder {
   display: grid;
   place-items: center;

@@ -22,8 +22,18 @@ const CASE_STUDIES = [
       "Moved from problem framing to a deployed prototype using AI-assisted development, SerpAPI, GitHub, and Render—enough to test the booking logic and alerting experience with real rate data.",
     link: "https://hotelscanner.paul-totah.com",
     linkLabel: "View live prototype",
-    image: "/case-hotel-rates.jpg",
-    imageAlt: "Hotel exterior used as visual context for the multi-date rate scanner prototype",
+    image: "/hotel-scanner-results.png",
+    imageAlt: "Hotel Rate Scanner comparison results for The Ritz-Carlton Bacara across two date options",
+    images: [
+      {
+        src: "/hotel-scanner-results.png",
+        alt: "Hotel Rate Scanner comparison results showing best nightly rate across two date options",
+      },
+      {
+        src: "/hotel-scanner-landing.png",
+        alt: "Hotel Rate Scanner landing page with multi-date search and compare workflow",
+      },
+    ],
   },
   {
     id: "alaska-atmos",
@@ -122,9 +132,17 @@ function CaseStudy({ study, index, onOpenModal }) {
       className={`case-study${inView ? " in-view" : ""}`}
       style={{ transitionDelay: `${index * 0.08}s` }}
     >
-      <div className={`case-media${study.placeholder ? " placeholder" : ""}`}>
+      <div
+        className={`case-media${study.placeholder ? " placeholder" : ""}${
+          study.images?.length ? " case-media-stack" : ""
+        }${study.image?.endsWith(".png") || study.images ? " product-shot" : ""}`}
+      >
         {study.placeholder ? (
           <span>{study.placeholder}</span>
+        ) : study.images?.length ? (
+          study.images.map((image) => (
+            <img key={image.src} src={image.src} alt={image.alt} />
+          ))
         ) : (
           <img src={study.image} alt={study.imageAlt} />
         )}
