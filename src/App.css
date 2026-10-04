@@ -65,10 +65,42 @@
   border-bottom: 1px solid transparent;
 }
 
+.site-nav .brand {
+  color: #f7f4ef;
+}
+
+.site-nav .brand span {
+  color: #8fd6c4;
+}
+
+.site-nav .nav-links button {
+  color: rgba(247, 244, 239, 0.78);
+}
+
+.site-nav .nav-links button:hover {
+  color: #ffffff;
+}
+
 .site-nav.scrolled {
   background: rgba(238, 241, 244, 0.88);
   backdrop-filter: blur(14px);
   border-bottom-color: var(--line);
+}
+
+.site-nav.scrolled .brand {
+  color: var(--ink);
+}
+
+.site-nav.scrolled .brand span {
+  color: var(--accent);
+}
+
+.site-nav.scrolled .nav-links button {
+  color: var(--muted);
+}
+
+.site-nav.scrolled .nav-links button:hover {
+  color: var(--accent-deep);
 }
 
 .brand {
@@ -81,10 +113,12 @@
   border: none;
   color: var(--ink);
   padding: 0;
+  transition: color 0.25s ease;
 }
 
 .brand span {
   color: var(--accent);
+  transition: color 0.25s ease;
 }
 
 .nav-links {
