@@ -36,18 +36,20 @@ const CASE_STUDIES = [
     ],
   },
   {
-    id: "alaska-atmos",
-    eyebrow: "UX concept",
-    title: "Alaska Airlines Atmos status projection",
-    meta: ["Loyalty UX", "Shared concept"],
+    id: "seven-feet-travel",
+    eyebrow: "Shipped product",
+    title: "Seven Feet Travel",
+    meta: ["Vibe coded", "Live site", "My travel business"],
     problem:
-      "An Atmos member can see miles earned and miles remaining, but already-booked trips are not factored into the status progress calculation.",
+      "As an independent travel advisor, I needed a site that earns a stranger’s trust and turns visitors into trip inquiries. A template wouldn’t reflect how I work or what my clients care about.",
     approach:
-      "I designed an enhancement to the existing Account section: an Upcoming Trips list, earned-versus-projected progress, and a summary that shows the remaining mileage gap after booked trips.",
+      "I built sevenfeettravel.com from scratch with AI-assisted development and owned every product decision: layout, content, trust signals, and how the inquiry flow works. When something broke, I tracked down the cause and fixed it, including catching an exposed API key and moving it to secure deploy-time injection.",
     outcome:
-      "The concept makes future status feel actionable instead of retrospective—so members can understand what they already have in motion before they book more travel.",
-    image: "/atmos-rewards-prototype.jpg",
-    imageAlt: "Mobile concept preview for Alaska Airlines Atmos status projection",
+      "Shipped to production and still improving it with real use. It’s the site my business runs on, built and maintained end-to-end by me.",
+    link: "https://www.sevenfeettravel.com",
+    linkLabel: "View live site",
+    image: "/seven-feet-travel-home.jpg",
+    imageAlt: "Seven Feet Travel homepage with the headline Travel. Planned Your Way.",
   },
   {
     id: "domain-signal",
@@ -249,9 +251,9 @@ export default function App() {
             <p className="eyebrow">Selected work</p>
             <h2>Product thinking from real customer friction</h2>
             <p>
-              A short set of case studies: two prototypes that show how I frame
-              and build, plus the domain work that shapes how I make product
-              decisions.
+              A short set of case studies: a live prototype and a product I
+              built and shipped for my own business, plus the domain work that
+              shapes how I make product decisions.
             </p>
           </div>
           <div className="case-list">
