@@ -108,19 +108,19 @@ const APPROACH_STEPS = [
 const PROOF_POINTS = [
   {
     title: "Enterprise SaaS at SAP",
-    body: "Supported delivery and customer outcomes in a sizable enterprise portfolio, where release readiness, clear requirements, and adoption mattered as much as the feature itself.",
+    body: "Managed a portfolio of 20–30 Fortune 500 enterprise customers representing €45M–€60M in annual contract value. Partnered with customers and internal teams to resolve complex challenges, support successful product deployments, improve adoption, and turn customer feedback into meaningful improvements. Reduced escalations by 40% while strengthening customer relationships and business outcomes.",
   },
   {
-    title: "Hospitality technology at Duetto",
-    body: "Worked across product-adjacent hotel commercial workflows in a large property footprint, translating customer friction into signal for revenue and pricing tools.",
+    title: "Hospitality Technology at Duetto",
+    body: "Led product initiatives across reporting, analytics, forecasting, and revenue management technology supporting more than 6,300 hotels worldwide. Translated customer needs into product improvements, worked with engineering and design teams to deliver new capabilities, and introduced AI-assisted workflows that improved efficiency and reduced backlog. Combined firsthand hospitality experience with technology to build solutions that address real operational challenges.",
   },
   {
     title: "Hotelier",
-    body: "Guest services and night audit at Best Western, then sales, leadership, revenue, and events at Modus, Hyatt, and Pan Pacific, across 12 hotels.",
+    body: "Built a hospitality career spanning 12 hotels, progressing from guest services and night audit at Best Western to sales, revenue strategy, and commercial leadership roles at Modus Hotels, Hyatt, and Pan Pacific. Managed multimillion-dollar revenue portfolios, developed successful sales teams, and drove revenue growth through strategic account management, pricing, and group business. This hands-on experience shaped a deep understanding of hotel operations, profitability, and the decisions that drive performance.",
   },
   {
-    title: "Earlier career in non-profit",
-    body: "Research analyst at PBS, then program manager at the American Political Science Association and the National Association of Child Care Resource & Referral Agencies.",
+    title: "Earlier Career in Nonprofits",
+    body: "Began a career in research and nonprofit program management, starting as a Research Analyst at PBS before moving into Program Manager roles at the American Political Science Association and the National Association of Child Care Resource & Referral Agencies.",
   },
 ];
 
@@ -345,11 +345,13 @@ export default function App() {
             className={`contact-panel${contactInView ? " in-view" : ""}`}
           >
             <p className="eyebrow">Contact</p>
-            <h2>Let’s talk about product problems.</h2>
+            <h2>Let’s Connect</h2>
+            <p>Great conversations often start with a simple hello.</p>
             <p>
-              Open to product roles in enterprise SaaS, analytics, and
-              hospitality. Email is the fastest path; LinkedIn and my resume
-              are here too.
+              Whether it’s a product challenge, an interesting opportunity, or
+              just a chance to exchange ideas, I’m always open to connecting.
+              Drop me an email, find me on LinkedIn, or take a look at my
+              resume.
             </p>
             <div className="contact-actions">
               <a className="primary" href="mailto:paultotah@gmail.com">
@@ -372,7 +374,7 @@ export default function App() {
       </section>
 
       <footer className="site-footer">
-        <span>© 2026 Paul Totah — Product Manager</span>
+        <span>© 2026 Paul Totah</span>
       </footer>
     </div>
   );

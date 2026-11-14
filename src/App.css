@@ -595,11 +595,15 @@
 }
 
 .contact-panel > p {
-  margin: 0 0 2rem;
+  margin: 0 0 1rem;
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.7;
   max-width: 36rem;
+}
+
+.contact-panel > p:last-of-type {
+  margin-bottom: 2rem;
 }
 
 .contact-actions {
