@@ -22,16 +22,16 @@ const CASE_STUDIES = [
       "Moved from problem framing to a deployed prototype using AI-assisted development, SerpAPI, GitHub, and Render—enough to test the booking logic and alerting experience with real rate data.",
     link: "https://hotelscanner.paul-totah.com",
     linkLabel: "View live prototype",
-    image: "/hotel-scanner-results.png",
-    imageAlt: "Hotel Rate Scanner comparison results for The Ritz-Carlton Bacara across two date options",
+    image: "/hotel-scanner-landing.png",
+    imageAlt: "Hotel Rate Scanner landing page with multi-date search and compare workflow",
     images: [
-      {
-        src: "/hotel-scanner-results.png",
-        alt: "Hotel Rate Scanner comparison results showing best nightly rate across two date options",
-      },
       {
         src: "/hotel-scanner-landing.png",
         alt: "Hotel Rate Scanner landing page with multi-date search and compare workflow",
+      },
+      {
+        src: "/hotel-scanner-results.png",
+        alt: "Hotel Rate Scanner comparison results showing best nightly rate across two date options",
       },
     ],
   },
@@ -42,22 +42,42 @@ const CASE_STUDIES = [
     meta: ["Vibe coded", "Live site", "My travel business"],
     problem:
       "As an independent travel advisor, I needed a site that earns a stranger’s trust and turns visitors into trip inquiries. A template wouldn’t reflect how I work or what my clients care about.",
-    approach:
-      "I built sevenfeettravel.com from scratch with AI-assisted development and owned every product decision: layout, content, trust signals, and how the inquiry flow works. When something broke, I tracked down the cause and fixed it, including catching an exposed API key and moving it to secure deploy-time injection.",
+    approach: (
+      <>
+        I built{" "}
+        <a href="https://www.sevenfeettravel.com" target="_blank" rel="noreferrer">
+          sevenfeettravel.com
+        </a>{" "}
+        from scratch with AI-assisted development and owned every product decision: layout,
+        content, trust signals, and how the inquiry flow works. When something broke, I
+        tracked down the cause and fixed it, including catching an exposed API key and
+        moving it to secure deploy-time injection.
+      </>
+    ),
     outcome:
       "Shipped to production and still improving it with real use. It’s the site my business runs on, built and maintained end-to-end by me.",
     link: "https://www.sevenfeettravel.com",
     linkLabel: "View live site",
     image: "/seven-feet-travel-home.jpg",
     imageAlt: "Seven Feet Travel homepage with the headline Travel. Planned Your Way.",
+    images: [
+      {
+        src: "/seven-feet-travel-home.jpg",
+        alt: "Seven Feet Travel homepage with the headline Travel. Planned Your Way.",
+      },
+      {
+        src: "/seven-feet-planning.png",
+        alt: "Seven Feet Travel planning page showing the transparent fee structure for hotels, cruises, and custom itineraries",
+      },
+    ],
   },
   {
     id: "domain-signal",
     eyebrow: "Adjacent product work",
-    title: "Turning hotel and SaaS friction into product signal",
-    meta: ["Duetto", "SAP", "Hyatt"],
+    title: "Turning workflow friction into product signal",
+    meta: ["SAP", "Duetto", "Hyatt"],
     problem:
-      "Before holding a formal PM title, most of my work sat next to the product: hotel commercial strategy, enterprise SaaS delivery, and hospitality technology used across large property footprints.",
+      "Before holding a formal PM title, most of my work sat next to the product: enterprise SaaS delivery, hotel commercial strategy, and hospitality technology used across large property footprints.",
     approach:
       "I stayed close to the workflow—why a rate plan stalls, why a forecast misses, why a feature fails to activate—and translated that friction into clearer requirements, prioritization input, and adoption support.",
     outcome:
@@ -69,7 +89,7 @@ const CASE_STUDIES = [
 const APPROACH_STEPS = [
   {
     title: "Find the real workflow friction",
-    body: "I start with the job someone is trying to finish—not the feature request. In hospitality and SaaS, the useful problem is usually buried inside a rate, forecast, booking, or adoption workflow.",
+    body: "I start with the job someone is trying to finish—not the feature request. The useful problem is usually buried inside a pricing, forecast, onboarding, or adoption workflow.",
   },
   {
     title: "Tie it to a business reason",
@@ -87,16 +107,20 @@ const APPROACH_STEPS = [
 
 const PROOF_POINTS = [
   {
-    title: "Hospitality technology at Duetto",
-    body: "Worked across product-adjacent hotel commercial workflows in a large property footprint, translating customer friction into signal for revenue and pricing tools.",
-  },
-  {
     title: "Enterprise SaaS at SAP",
     body: "Supported delivery and customer outcomes in a sizable enterprise portfolio, where release readiness, clear requirements, and adoption mattered as much as the feature itself.",
   },
   {
-    title: "Hotel commercial strategy with Hyatt",
-    body: "Built judgment around how hotels actually make revenue decisions—useful context when shaping tools meant to support those decisions.",
+    title: "Hospitality technology at Duetto",
+    body: "Worked across product-adjacent hotel commercial workflows in a large property footprint, translating customer friction into signal for revenue and pricing tools.",
+  },
+  {
+    title: "Hotelier",
+    body: "Guest services and night audit at Best Western, then sales, leadership, revenue, and events at Modus, Hyatt, and Pan Pacific, across 12 hotels.",
+  },
+  {
+    title: "Earlier career in non-profit",
+    body: "Research analyst at PBS, then program manager at the American Political Science Association and the National Association of Child Care Resource & Referral Agencies.",
   },
 ];
 
@@ -181,8 +205,6 @@ export default function App() {
   const [heroRef, heroInView] = useInView(0.12);
   const [approachRef, approachInView] = useInView(0.12);
   const [contactRef, contactInView] = useInView(0.16);
-  const [formState, setFormState] = useState({ name: "", email: "", message: "" });
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -194,21 +216,9 @@ export default function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleContactSubmit = (event) => {
-    event.preventDefault();
-    const subject = encodeURIComponent(`Portfolio contact from ${formState.name || "visitor"}`);
-    const body = encodeURIComponent(
-      `Name: ${formState.name}\nEmail: ${formState.email}\n\n${formState.message}`
-    );
-    window.location.href = `mailto:paultotah@gmail.com?subject=${subject}&body=${body}`;
-  };
-
   return (
     <div className="portfolio">
       <nav className={`site-nav${scrolled ? " scrolled" : ""}`}>
-        <button type="button" className="brand" onClick={() => scrollTo("hero")}>
-          PAUL<span>.</span>
-        </button>
         <div className="nav-links">
           {NAV_LINKS.map((link) => (
             <button key={link.id} type="button" onClick={() => scrollTo(link.id)}>
@@ -227,15 +237,15 @@ export default function App() {
           />
         </div>
         <div className={`hero-content${heroInView ? " is-visible" : ""}`}>
-          <p className="eyebrow">Product-minded · Hospitality & SaaS</p>
+          <p className="eyebrow">Product-minded · B2B SaaS</p>
           <h1 className="hero-brand">
             <em>Paul</em> Totah<span>.</span>
           </h1>
           <p className="hero-title">
-            Hospitality and revenue experience, applied to product problems.
+            Revenue and enterprise experience, applied to product problems.
           </p>
           <p className="hero-copy">
-            I connect hotel operations, commercial strategy, and enterprise SaaS
+            I connect customer workflows, commercial strategy, and enterprise SaaS
             delivery to shippable product ideas—using AI-assisted prototyping to
             move from friction to something you can test.
           </p>
@@ -301,23 +311,20 @@ export default function App() {
             <p className="eyebrow">About</p>
             <h2>My path into product started before the title did.</h2>
             <p>
-              I have worked across nonprofit, hospitality, enterprise SaaS at{" "}
-              <strong>SAP</strong>, hospitality technology at{" "}
-              <strong>Duetto</strong>, and hotel commercial strategy with{" "}
-              <strong>Hyatt Hotels & Resorts</strong>. Much of that time was
-              spent close to the customer problems products are meant to solve.
+              I have worked across nonprofit programs and research, enterprise
+              SaaS at <strong>SAP</strong>, hospitality technology at{" "}
+              <strong>Duetto</strong>, and hotel sales and operations with{" "}
+              <strong>Hyatt</strong>, <strong>Pan Pacific</strong>,{" "}
+              <strong>Modus</strong>, and <strong>Best Western</strong>. Much
+              of that time was spent close to the customer problems products
+              are meant to solve.
             </p>
             <p>
               Formal product management is a newer chapter. The useful part is
               not years in the seat—it is the judgment I already built around
-              hotel operations, revenue decisions, and enterprise delivery, now
+              customer workflows, revenue decisions, and enterprise delivery, now
               paired with AI-forward tools like <strong>Claude</strong> and{" "}
               <strong>Cursor</strong> to move faster from problem to prototype.
-            </p>
-            <p>
-              I am looking for product roles where domain fluency, clear
-              problem framing, and practical execution matter more than a long
-              title history.
             </p>
           </div>
           <div className="proof-points">
@@ -338,11 +345,11 @@ export default function App() {
             className={`contact-panel${contactInView ? " in-view" : ""}`}
           >
             <p className="eyebrow">Contact</p>
-            <h2>Let’s talk about hospitality product problems.</h2>
+            <h2>Let’s talk about product problems.</h2>
             <p>
-              Open to product opportunities where hospitality, revenue systems,
-              or enterprise SaaS experience is an advantage. Email is the
-              fastest path; LinkedIn and my resume are here too.
+              Open to product roles in enterprise SaaS, analytics, and
+              hospitality. Email is the fastest path; LinkedIn and my resume
+              are here too.
             </p>
             <div className="contact-actions">
               <a className="primary" href="mailto:paultotah@gmail.com">
@@ -360,42 +367,6 @@ export default function App() {
                 Resume
               </a>
             </div>
-            <form className="contact-form" onSubmit={handleContactSubmit}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your name"
-                value={formState.name}
-                onChange={(event) =>
-                  setFormState((state) => ({ ...state, name: event.target.value }))
-                }
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email address"
-                value={formState.email}
-                onChange={(event) =>
-                  setFormState((state) => ({ ...state, email: event.target.value }))
-                }
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="What should we talk about?"
-                rows={5}
-                value={formState.message}
-                onChange={(event) =>
-                  setFormState((state) => ({
-                    ...state,
-                    message: event.target.value,
-                  }))
-                }
-                required
-              />
-              <button type="submit">Open email draft →</button>
-            </form>
           </div>
         </div>
       </section>
