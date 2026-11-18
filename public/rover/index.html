@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/rover/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Household Fit</title>
+    <style>
+      :root { color-scheme: light; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #ffffff;
+        color: #1c1c1c;
+        font-family: Figtree, "Segoe UI", sans-serif;
+      }
+      main {
+        width: min(100% - 2rem, 22rem);
+      }
+      h1 {
+        margin: 0 0 0.35rem;
+        font-size: 1.75rem;
+        font-weight: 650;
+        letter-spacing: -0.02em;
+      }
+      p { margin: 0 0 1.25rem; color: #3d4450; }
+      form { display: grid; gap: 0.75rem; }
+      input {
+        width: 100%;
+        border: 1px solid #d7d7d7;
+        border-radius: 0.6rem;
+        padding: 0.75rem 0.85rem;
+        font: inherit;
+      }
+      button {
+        border: 0;
+        border-radius: 999px;
+        padding: 0.75rem 1rem;
+        background: #1b6c42;
+        color: white;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .err { min-height: 1.25rem; margin: 0.75rem 0 0; color: #8d3b22; }
+      iframe {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Household Fit</h1>
+      <p>Enter the password to open this page.</p>
+      <form>
+        <input type="password" name="password" autocomplete="current-password" required aria-label="Password" />
+        <button type="submit">Continue</button>
+      </form>
+      <p class="err" role="alert"></p>
+    </main>
+    <script>
+      const form = document.querySelector("form")
+      const error = document.querySelector(".err")
+      const input = form.elements.password
+      const saved = sessionStorage.getItem("hf-gate")
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault()
+        unlock(input.value)
+      })
+
+      if (saved) unlock(saved)
+
+      async function unlock(password) {
+        error.textContent = ""
+        try {
+          const payload = await fetch("./app.enc.json").then((response) => {
+            if (!response.ok) throw new Error("missing")
+            return response.json()
+          })
+          const salt = Uint8Array.from(atob(payload.salt), (char) => char.charCodeAt(0))
+          const iv = Uint8Array.from(atob(payload.iv), (char) => char.charCodeAt(0))
+          const data = Uint8Array.from(atob(payload.data), (char) => char.charCodeAt(0))
+          const material = await crypto.subtle.importKey(
+            "raw",
+            new TextEncoder().encode(password),
+            "PBKDF2",
+            false,
+            ["deriveKey"],
+          )
+          const key = await crypto.subtle.deriveKey(
+            { name: "PBKDF2", salt, iterations: 150000, hash: "SHA-256" },
+            material,
+            { name: "AES-GCM", length: 256 },
+            false,
+            ["decrypt"],
+          )
+          const html = new TextDecoder().decode(
+            await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, data),
+          )
+          sessionStorage.setItem("hf-gate", password)
+          const frame = document.createElement("iframe")
+          frame.title = "Household Fit"
+          frame.srcdoc = html
+          document.body.replaceChildren(frame)
+        } catch {
+          sessionStorage.removeItem("hf-gate")
+          error.textContent = "That password doesn’t open this page."
+        }
+      }
+    </script>
+  </body>
+</html>

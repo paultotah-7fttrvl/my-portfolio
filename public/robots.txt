@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /rover
 
 Sitemap: https://paul-totah.com/sitemap.xml
