@@ -5,6 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/rover/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
+    <base href="/rover/" />
     <title>Household Fit</title>
     <style>
       :root { color-scheme: light; }
@@ -75,15 +76,15 @@
 
       form.addEventListener("submit", (event) => {
         event.preventDefault()
-        unlock(input.value)
+        unlock(input.value.trim())
       })
 
-      if (saved) unlock(saved)
+      if (saved) unlock(saved.trim())
 
       async function unlock(password) {
         error.textContent = ""
         try {
-          const payload = await fetch("./app.enc.json").then((response) => {
+          const payload = await fetch("/rover/app.enc.json").then((response) => {
             if (!response.ok) throw new Error("missing")
             return response.json()
           })
