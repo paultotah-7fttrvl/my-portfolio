@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# Private Rover prototype assets (kept out of the public GitHub repo).
+# Provide them locally under public/rover/, or set ROVER_ASSETS_TAR_B64 on Render
+# (generate with: npm run rover:encode).
+public/rover/app.enc.json
+public/rover/milo.jpg
+public/rover/prd.pdf
+public/rover/prd.docx
+rover-assets.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

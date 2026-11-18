@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/restore-rover-assets.mjs && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "rover:encode": "node scripts/encode-rover-assets.mjs",
+    "rover:restore": "node scripts/restore-rover-assets.mjs"
   },
   "dependencies": {
     "react": "^19.2.5",

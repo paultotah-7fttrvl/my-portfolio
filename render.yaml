@@ -2,7 +2,7 @@ services:
   - type: web
     name: my-portfolio
     runtime: static
-    buildCommand: npm install && npm run build
+    buildCommand: npm install && node scripts/restore-rover-assets.mjs && npm run build
     staticPublishPath: dist
     routes:
       - type: redirect
