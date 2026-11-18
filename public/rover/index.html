@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
     <base href="/rover/" />
-    <title>Household Fit</title>
+    <title>Rover Personalized Search & Help Me Choose</title>
     <style>
       :root { color-scheme: light; }
       * { box-sizing: border-box; }
@@ -20,7 +20,7 @@
         font-family: Figtree, "Segoe UI", sans-serif;
       }
       main {
-        width: min(100% - 2rem, 22rem);
+        width: min(100% - 2rem, 34rem);
       }
       h1 {
         margin: 0 0 0.35rem;
@@ -60,7 +60,7 @@
   </head>
   <body>
     <main>
-      <h1>Household Fit</h1>
+      <h1>Rover Personalized Search & Help Me Choose</h1>
       <p>Enter the password to open this page.</p>
       <form>
         <input type="password" name="password" autocomplete="current-password" required aria-label="Password" />
@@ -110,7 +110,7 @@
           )
           sessionStorage.setItem("hf-gate", password)
           const frame = document.createElement("iframe")
-          frame.title = "Household Fit"
+          frame.title = "Rover Personalized Search & Help Me Choose"
           frame.srcdoc = html
           document.body.replaceChildren(frame)
         } catch {
